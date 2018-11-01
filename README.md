@@ -19,7 +19,7 @@ that have been entered. If I had unlimited time to complete the project, I would
 want to implement a clean user-interface instead of running the program in the terminal.
 
 ## Building & Running the Program
-The user simply needs to run the code `javac calendar.java` and `java calendar.java`
+The user simply needs to run the code `python3 calendar.py`
 
 ## Testing the Application
 
