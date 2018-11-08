@@ -1,6 +1,9 @@
 ## Created by Andrew C. Everitt
 ## Final Project for CMPSC480 Software Innovations I
 ## Honor Code: This work is mine and solely mine unless otherwise cited.
+
+## TODO: 1) Main function connect to account 2) Create event class 3) Create calculator function to find difference between dates 4) Clean up code
+
 def main():
     response = input(" Welcome to the ACE Calendar! Please enter your UserID or type 'new' to make a new account: ")
     if response.upper() == "NEW":
@@ -75,14 +78,6 @@ print("  AgeMethod1: ",user.ageMethod1()) # old technique
 
 
 #create another instance of this object with a new name
-
-#user1 = User("Franky Wrighty","20170608") #June 8, 1867
-#print("    FullName: ",user1.name)
-#print("       First: ",user1.first_name)
-#print("        Last: ",user1.last_name)
-#print("    Birthday: ",user1.birthday)
-#print("  AgeMethod1: ",user1.ageMethod1()) # old technique
-#print("  AgeMethod2: ",user.ageMethod2()) #dynamic date getting
 
 #help(User)
 main()
