@@ -8,13 +8,45 @@ def main():
     response = input(" Welcome to the ACE Calendar! Please enter your UserID or type 'new' to make a new account: ")
     if response.upper() == "NEW":
         response2 = input(" Thanks for choosing ACE Calendar. Enter the UserID you would like to use: ")
-        userID = response2
-        print(userID)
+        print(" Welcome ", response2, "!")
+        interact()
+    else:
+        print(" Welcome ", response, "!")
+        interact()
 # end of main function
 
+def interact():
+    action = input("What action would you like to take today? Enter '1' to view event list, '2' to view priority list, '3' to add an additional event, '4' to delete an event, or '5' to switch users: ")
+    if action == 1:
+        answer = input(" Enter '1' to see your events")
+    elif action == 3:
+        answer = input(" Please enter the name of the event you want to add or type 'back' to go back: ")
+    elif action == 4:
+        answer = input(" Please enter the name of the event you want to delete or type 'back' to go back: ")
+    elif action == 5:
+        main()
+    else:
+        print(" The number that you entered isn't an available option. Returning to main menu...")
+        main()
+
+# end of interact function
 
 class User:
     """This class creates the user's profile, which stores name, userID, and up to 10 events."""
+    def __init__(self, full_name, birthday): ## userID, event):
+        self.name = full_name
+        self.birthday = birthday #yyyymmdd
+        #self.userID = userID #string
+        #self.event = event #string
+        # Extract the first and last names
+        name_pieces = full_name.split(" ") #ret a list
+        self.first_name = name_pieces[0] # first element
+        self.last_name = name_pieces[1]  # second element
+    #end of __init__()
+#end of class
+
+class Event:
+    """This class creates the ability to create events with a name, date, and priority."""
     def __init__(self, full_name, birthday): ## userID, event):
         self.name = full_name
         self.birthday = birthday #yyyymmdd
@@ -65,17 +97,7 @@ class User:
         return int(age_in_years)
         #end of age()
 
-
-
 import datetime # library
-user = User("Frank Wright","18670608") # Make instance for Frank, June 8, 1867
-print("    FullName: ",user.name)
-print("       First: ",user.first_name)
-print("        Last: ",user.last_name)
-print("    Birthday: ",user.birthday)
-print("  AgeMethod1: ",user.ageMethod1()) # old technique
-#print("  AgeMethod2: ",user.ageMethod2()) #dynamic date getting
-
 
 #create another instance of this object with a new name
 
