@@ -50,10 +50,25 @@ def interact():
         answer = input(" Enter '1' to see the priority of your events, '2' to see the priority of global events, '3' to see the priority of all events, or '4' to go back: ")
         if answer == "1":
             print(" Your events, from highest to lowest priority, are: ")
+            ret = input(" Please type 'back' when you are ready to return to the action screen: ")
+            if ret.upper() == "BACK":
+                interact()
+            else:
+                print(" Please type 'back' when you are ready to return to the action screen: ")
         elif answer == "2":
             print(" The global events, from highest to lowest priority, are: ")
+            ret = input(" Please type 'back' when you are ready to return to the action screen: ")
+            if ret.upper() == "BACK":
+                interact()
+            else:
+                print(" Please type 'back' when you are ready to return to the action screen: ")
         elif answer == "3":
             print(" The list of your events and the global ones, from highest to lowest priority, is as follows: ")
+            ret = input(" Please type 'back' when you are ready to return to the action screen: ")
+            if ret.upper() == "BACK":
+                interact()
+            else:
+                print(" Please type 'back' when you are ready to return to the action screen: ")
         elif answer == "4":
             print(" Returning to the action screen...")
             interact()
