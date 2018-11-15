@@ -8,17 +8,30 @@ def main():
     response = input(" Welcome to the ACE Calendar! Please enter your UserID or type 'new' to make a new account: ")
     if response.upper() == "NEW":
         response2 = input(" Thanks for choosing ACE Calendar. Enter the UserID you would like to use: ")
-        print(" Welcome ", response2, "!")
+        print(" Welcome ", response2)
+        info = input(" We thank you for your interest in ACE Calendar, but we need some more information before you get started. Please enter your first and last names: ")
+        info2 = input(" Great! Now enter your birthday as one, eight-digit number. For example, if your birthday is January 1, 1999, you would enter 01011999 (MMDDYYYY): ")
         interact()
     else:
-        print(" Welcome ", response, "!")
+        print(" Welcome ", response)
         interact()
 # end of main function
 
 def interact():
     action = input("What action would you like to take today? Enter '1' to view event list, '2' to view priority list, '3' to add an additional event, '4' to delete an event, or '5' to switch users: ")
     if action == 1:
-        answer = input(" Enter '1' to see your events")
+        answer = input(" Enter '1' to see your events, '2' to see global events, or '3' to see all events: ")
+            if answer == 1:
+                print(" Your events are: ")
+            elif answer == 2:
+                print(" The global events are: ")
+            elif answer == 3:
+                print(" The list of your events and the global ones is as follows: ")
+            else:
+                print(" The number you entered isn't an available option. Returning to the main menu...")
+                main()
+    elif action == 2:
+        answer = input(" Enter '1' to see the priority of your events, '2' to see the priority of global events, '3' to see the priority of all events, or '4' to go back: ")
     elif action == 3:
         answer = input(" Please enter the name of the event you want to add or type 'back' to go back: ")
     elif action == 4:
