@@ -3,6 +3,7 @@
 ## Honor Code: This work is mine and solely mine unless otherwise cited.
 
 ## TODO: 1) Main function connect to account 2) Create event class 3) Create calculator function to find difference between dates 4) Clean up code & write comments
+import pickle as pc
 
 def main():
     response = input(" Welcome to the ACE Calendar! Please enter your UserID to access your account, type 'new' to make a new account, 'list' to see all accounts, or 'quit' to exit: ")
@@ -13,7 +14,9 @@ def main():
         info2 = input(" Great! Now enter your birthday as one, eight-digit number. For example, if your birthday is January 1, 1999, you would enter 01011999 (MMDDYYYY): ")
         info3 = input(" Please make note of your account details. Enter 'yes' if everything is correct or 'no' if something needs to be changed: ")
         if info3.upper() == "YES":
-            print(" Your account has now been created.") #add code to create user
+            return info, response2, info2
+            print(" Your account has now been created.")
+            make_account(info, response2, info2) #add code to create user
             interact()
         elif info3.upper() == "NO":
             print(" Your account has NOT been created. Returning to the main menu...")
@@ -32,13 +35,23 @@ def main():
         interact()
 # end of main function
 
+def make_account(info, reponse2, info2): #full name, userID, birthday
+    account = User(info, response2, info2)
+    return account
+
+def make_event(answer, answer4, answer3, answer5): #userID, status, event name, date, priority
+    event = Event(answer, answer4, answer3, answer5)
+    return event
 
 def interact():
-    action = input("What action would you like to take today? Enter '1' to view event list, '2' to view priority list, '3' to add an additional event, '4' to delete an event, or '5' to switch users: ")
+    action = input("What action would you like to take today? Enter '1' to view event list, '2' to view priority list, '3' to add an additional event, '4' to delete an event, '5' to switch users, or '6' to quit: ")
     if action == "1": #event list by date
         answer = input(" Enter '1' to see your events, '2' to see global events, or '3' to see all events: ")
         if answer == "1": #showing personal events
             print(" Your events, based on date, are: ")
+            print(account.userID)
+            print(account.name)
+            print(account.birthday)
             #code to print events
             ret = input(" Please type 'back' when you are ready to return to the action screen: ")
             if ret.upper() == "BACK":
@@ -48,6 +61,7 @@ def interact():
                 interact()
         elif answer == "2": #showing global events
             print(" The global events, based on date, are: ")
+                #if status=global, print name and date
             #code to print events
             ret = input(" Please type 'back' when you are ready to return to the action screen: ")
             if ret.upper() == "BACK":
@@ -154,6 +168,8 @@ def interact():
                 interact()
     elif action == "5":
         main()
+    elif action == "6":
+        quit()
     else:
         print(" The number that you entered isn't an available option. Returning to main menu...")
         main()
@@ -162,12 +178,12 @@ def interact():
 
 class User:
     """This class creates the user's profile, which stores name, userID, and up to 10 events."""
-    def __init__(self, full_name, birthday): ## userID):
-        self.name = full_name
-        self.birthday = birthday #yyyymmdd
-        #self.userID = userID #string
+    def __init__(self, info, reponse2, info2):
+        self.name = response2
+        self.birthday = info2 #yyyymmdd
+        self.userID = info #string
         # Extract the first and last names
-        name_pieces = full_name.split(" ") #ret a list
+        name_pieces = response2.split(" ") #ret a list
         self.first_name = name_pieces[0] # first element
         self.last_name = name_pieces[1]  # second element
     #end of __init__()
@@ -175,13 +191,12 @@ class User:
 
 class Event:
     """This class creates the ability to create events with a name, date, and priority."""
-    def __init__(self, full_name, birthday):
-        self.name = full_name
-        self.birthday = birthday #yyyymmdd
-        #self.userID = userID #string
-        #self.event = event #string
-        # Extract the first and last names
-        name_pieces = full_name.split(" ") #ret a list
+    def __init__(self, userID, event_name, date, priority, status):
+        self.userID = userID #string
+        self.ename = event_name #string
+        self.date = date #string
+        self.priority = priority #int
+        self.status = status #string
     #end of __init__()
 #end of class
 
@@ -193,22 +208,14 @@ def getToday(self):
     yyyy = int(today[0:4])
     mm = int(today[5:7])
     dd = int(today[8:10])
-    today = datetime.date(yyyy,mm,dd) #date of birth
+    today = datetime.date(yyyy,mm,dd) #todays date
     return today
     #end of getToday()
 
-def ageMethod(self):
-    """Return the age of the person in years. Convert birthday to get these years."""
-    yyyy_b = int(self.birthday[0:4])
-    mm_b = int(self.birthday[4:6])
-    dd_b = int(self.birthday[6:8])
-     #date of birth
-    dob = datetime.date(yyyy_b,mm_b,dd_b)
-    today = self.getToday()
-    age_in_days = (today - dob).days
-    age_in_years = age_in_days/365
-    return int(age_in_years)
-    #end of age()
+def daysAway(self):
+    getToday(self)
+    print(" This event is ___ days away")
+    #end of daysAway()
 
 import datetime # library
 
