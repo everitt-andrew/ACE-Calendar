@@ -35,7 +35,7 @@ def main():
         interact()
 # end of main function
 
-def make_account(info, reponse2, info2): #full name, userID, birthday
+def make_account(info, response2, info2): #full name, userID, birthday
     account = User(info, response2, info2)
     return account
 
@@ -178,7 +178,7 @@ def interact():
 
 class User:
     """This class creates the user's profile, which stores name, userID, and up to 10 events."""
-    def __init__(self, info, reponse2, info2):
+    def __init__(self, info, response2, info2):
         self.name = response2
         self.birthday = info2 #yyyymmdd
         self.userID = info #string
