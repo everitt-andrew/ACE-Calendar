@@ -35,7 +35,7 @@ def main():
         interact()
 # end of main function
 
-def make_account(info, reponse2, info2): #full name, userID, birthday
+def make_account(info, response2, info2): #full name, userID, birthday
     account = User(info, response2, info2)
     return account
 
